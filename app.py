@@ -70,6 +70,13 @@ if uploaded_image is not None:
                 if predicted_word is None or predicted_word == "endseq":
                     break
             return caption
+        # Display the generated caption with custom styling
+        st.markdown(
+            f'<div style="border-left: 6px solid #ccc; padding: 5px 20px; margin-top: 20px;">'
+            f'<p style="font-style: italic;">“{generated_caption}”</p>'
+            f'</div>',
+            unsafe_allow_html=True
+        )
 
         # Generate caption
         generated_caption = predict_caption(model, image_features, tokenizer, max_caption_length)
@@ -96,10 +103,4 @@ tts.save("generated_audio.mp3")
 # Display the audio player
 st.audio("generated_audio.mp3", format="audio/mp3", start_time=0)
 
-    # Display the generated caption with custom styling
-    st.markdown(
-        f'<div style="border-left: 6px solid #ccc; padding: 5px 20px; margin-top: 20px;">'
-        f'<p style="font-style: italic;">“{generated_caption}”</p>'
-        f'</div>',
-        unsafe_allow_html=True
-    )
+    
