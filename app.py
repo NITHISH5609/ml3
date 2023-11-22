@@ -38,7 +38,7 @@ if uploaded_image is not None:
     st.subheader("Generated Caption")
     # Display loading spinner while processing
     with st.spinner("🌈 Generating caption..."):
-    time.sleep(2)  # Simulating processing time
+        time.sleep(2)  # Simulating processing time
 
         # Load image
         image = load_img(uploaded_image, target_size=(224, 224))
