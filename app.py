@@ -33,11 +33,13 @@ uploaded_image = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"]
 # Process uploaded image
 if uploaded_image is not None:
     st.subheader("Uploaded Image")
-    st.image(uploaded_image, caption="Uploaded Image", use_column_width=True)
+    st.image(uploaded_image, caption="Uploaded Image", use_column_width=True, output_format='JPEG', style={"border": "2px solid #FFD700", "border-radius": "10px", "box-shadow": "2px 2px 8px #888888"})
 
     st.subheader("Generated Caption")
     # Display loading spinner while processing
-    with st.spinner("Generating caption..."):
+    with st.spinner("🌈 Generating caption..."):
+    time.sleep(2)  # Simulating processing time
+
         # Load image
         image = load_img(uploaded_image, target_size=(224, 224))
         image = img_to_array(image)
@@ -78,8 +80,10 @@ if uploaded_image is not None:
 
     # Display the generated caption with custom styling
     st.markdown(
-        f'<div style="border-left: 6px solid #ccc; padding: 5px 20px; margin-top: 20px;">'
-        f'<p style="font-style: italic;">“{generated_caption}”</p>'
-        f'</div>',
-        unsafe_allow_html=True
-    )
+    f"""
+    <div style="border-left: 6px solid #4CAF50; padding: 10px; margin-top: 20px; animation: fadeIn 2s;">
+    <p style="font-weight: bold; font-style: italic; color: #333; font-size: 18px;">“{generated_caption}”</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
